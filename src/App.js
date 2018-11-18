@@ -248,6 +248,11 @@ function loadScript(url) {
   script.async= true
   script.defer= true
   index.parentNode.insertBefore(script,index)
+
+  // Error handling if the script does not load
+  window.addEventListener('error', function(event) {
+    alert("Map did not load due to: "+event.error.message)
+  })
 }
 
 export default App
