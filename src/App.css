@@ -19,6 +19,18 @@
   margin-top:25px;
   font-size: 1.5em;
 }
+.error-window {
+  width: 20em;
+  height: 10em;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+.error-window p {
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 20px;
+  width: 80%;
+}
 #map {
   width: 100vw;
   height: 100vh;
@@ -162,7 +174,9 @@ input[type=text] {
     height: 100%;
     order: 2;
   }
-
+  .error-window {
+    order: 3;
+  }
   #places-of-interest {
     order: 1;
     width: 20%;
