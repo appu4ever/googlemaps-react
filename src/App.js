@@ -251,8 +251,22 @@ function loadScript(url) {
 
   //Error handling if the script does not load
 
-  script.onerror = function(msg) {
-    document.querySelector('.map-container').insertAdjacentHTML('beforeend',`<div class= 'error-window'><p>${msg}</p></div>`)
+  script.onerror = function(msg, url, lineNo, columnNo, error) {
+    var string = msg.toLowerCase()
+    var substring = "script error"
+    var message= ''
+    if (string.indexOf(substring) > -1){
+      message= 'Script Error: See Browser Console for Detail'
+    } else {
+      message = [
+      'Message: ' + msg,
+      'URL: ' + url,
+      'Line: ' + lineNo,
+      'Column: ' + columnNo,
+      'Error object: ' + JSON.stringify(error)
+      ].join(' - ');
+    }
+    document.querySelector('.map-container').insertAdjacentHTML('beforeend',`<div class= 'error-window'><p>${message}</p></div>`)
   }
 }
 
