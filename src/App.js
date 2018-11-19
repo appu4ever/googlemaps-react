@@ -249,10 +249,11 @@ function loadScript(url) {
   script.defer= true
   index.parentNode.insertBefore(script,index)
 
-  // Error handling if the script does not load
-  window.addEventListener('error', function(event) {
-    alert("Map did not load due to: "+event.error.message)
-  })
+  //Error handling if the script does not load
+
+  script.onerror = function(msg) {
+    document.querySelector('.map-container').insertAdjacentHTML('beforeend',`<div class= 'error-window'><p>${msg}</p></div>`)
+  }
 }
 
 export default App
